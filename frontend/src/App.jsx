@@ -8,6 +8,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
+import { IoCopy } from "react-icons/io5";
 import { v4 as uuidv4 } from 'uuid';
 import Footer from './components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
@@ -151,6 +152,21 @@ function App() {
     getPasswords();
   }
 
+  const handleCopy = (item)=> {
+    navigator.clipboard.writeText(item.password)
+    toast.success('Password copied to clipboard!', {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+  }
+
   return (
     <>
       <ToastContainer
@@ -202,12 +218,13 @@ function App() {
           {passwords.map((item) => {
             return <div key={item.id} className="ps">
               <ul className='flex items-center p-1 bg-green-300'>
-                <li className='text-sm text-black min-w-[13vw] sm:min-w-[15vw] flex justify-center'>{item.site}</li>
-                <li className='text-sm text-black min-w-[19vw] sm:min-w-[17vw] lg:min-w-[20vw] flex justify-center'>{item.username}</li>
-                <li className='text-sm text-black min-w-[21vw] lg:min-w-[16vw] flex justify-center'>{item.password}</li>
+                <li className='text-sm text-black min-w-[13vw] sm:min-w-[15vw] break-all flex justify-center'>{item.site}</li>
+                <li className='text-sm text-black min-w-[19vw] sm:min-w-[17vw] lg:min-w-[20vw] break-all flex justify-center'>{item.username}</li>
+                <li className='text-sm text-black min-w-[21vw] lg:min-w-[16vw] break-all flex justify-center'>{item.password}</li>
                 <li className='text-sm text-black min-w-[15vw] lg:min-w-[20vw] flex justify-center gap-2'>
                   <FaEdit onClick={() => handleEdit(item.id)} className='cursor-pointer hover:scale-115 transition-all duration-300' />
                   <MdDelete onClick={() => handleDelete(item.id)} className='cursor-pointer hover:scale-115 transition-all duration-300' />
+                  <IoCopy onClick={() => handleCopy(item)} className='cursor-pointer hover:scale-115 transition-all duration-300'/>
                 </li>
               </ul>
             </div>
