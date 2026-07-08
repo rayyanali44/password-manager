@@ -14,6 +14,17 @@ A full-stack Password Manager built using the MERN stack. It allows users to sec
 - Data stored in MongoDB
 - Responsive UI built with React and Tailwind CSS
 
+## Screenshots
+
+### Main Page
+
+![Main Page](screenshots/main.png)
+
+### Toast Notification
+
+![Toast Notification](screenshots/toast.png)
+
+
 ## Tech Stack
 
 ### Frontend
